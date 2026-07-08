@@ -1,0 +1,17 @@
+{
+  "name": "feishu-bridge",
+  "version": "0.1.0",
+  "description": "Local Feishu long-connection bridge with pluggable reply backends and CLI helpers.",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node bridge.js",
+    "check": "node --check bridge.js && node --check lib/feishu.js && node --check scripts/read.js && node --check scripts/send.js",
+    "read": "node scripts/read.js",
+    "send": "node scripts/send.js",
+    "status": "./bridgectl.sh status"
+  },
+  "dependencies": {
+    "@larksuiteoapi/node-sdk": "^1.24.0",
+    "axios": "^1.7.9"
+  }
+}
