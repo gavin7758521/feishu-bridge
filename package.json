@@ -27,10 +27,10 @@
     "node": ">=18"
   },
   "bin": {
-    "feishu-bridge": "./scripts/mcp.js",
-    "feishu-bridge-mcp": "./scripts/mcp.js",
-    "feishu-bridge-read": "./scripts/read.js",
-    "feishu-bridge-send": "./scripts/send.js"
+    "feishu-bridge": "scripts/mcp.js",
+    "feishu-bridge-mcp": "scripts/mcp.js",
+    "feishu-bridge-read": "scripts/read.js",
+    "feishu-bridge-send": "scripts/send.js"
   },
   "files": [
     "lib/",
