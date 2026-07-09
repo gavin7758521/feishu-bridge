@@ -126,3 +126,5 @@ npm test
 npm audit --omit=dev
 npm pack --dry-run
 ```
+
+See [docs/release.md](docs/release.md) for versioning and npm release policy.

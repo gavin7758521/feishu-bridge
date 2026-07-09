@@ -41,6 +41,8 @@ Never commit `.env`, `.env.*`, chat transcripts, tokens, or deployment handoff f
 
 ## Release Checklist
 
+This project follows Semantic Versioning. See `docs/release.md` for version rules and examples.
+
 Before publishing:
 
 ```sh
