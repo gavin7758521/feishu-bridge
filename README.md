@@ -14,6 +14,14 @@ Keep real credentials outside version control. Commit `.env.example`, not `.env`
 
 ## Setup
 
+Install from npm:
+
+```sh
+npm install -g @gavin7758521/feishu-bridge
+```
+
+Or install from a git checkout:
+
 ```sh
 npm install
 cp .env.example .env
@@ -28,6 +36,12 @@ FEISHU_TARGET_CHAT_ID=oc_xxx
 FEISHU_BOT_OPEN_ID=ou_xxx
 ```
 
+The bridge and CLI helpers load `.env` from the current working directory by default. You can override the path with:
+
+```sh
+FEISHU_BRIDGE_ENV_FILE=/path/to/feishu-bridge.env
+```
+
 Required Feishu permissions depend on what you use:
 
 - Send messages: message send permission, such as `im:message:send_as_bot`.
@@ -36,6 +50,14 @@ Required Feishu permissions depend on what you use:
 - Receive long-connection events: subscribe to `im.message.receive_v1` in the Feishu developer console.
 
 ## Run
+
+From a global npm install:
+
+```sh
+feishu-bridge
+```
+
+From a git checkout:
 
 ```sh
 npm start
@@ -96,12 +118,14 @@ Read recent messages:
 ```sh
 npm run read -- --hours 24 --limit 20
 npm run read -- --days 7 --json
+feishu-bridge-read --hours 24 --limit 20
 ```
 
 Send a message:
 
 ```sh
 npm run send -- --text "message"
+feishu-bridge-send --text "message"
 ```
 
 Mention a member:
@@ -109,6 +133,7 @@ Mention a member:
 ```sh
 npm run send -- --at-open-id ou_xxx --at-label "Name" --text "message"
 npm run send -- --at-name "Name" --text "message"
+feishu-bridge-send --at-name "Name" --text "message"
 ```
 
 Check the service:
@@ -149,6 +174,7 @@ The helper script wraps common operations:
 ./bridgectl.sh mode echo
 ./bridgectl.sh mode codex
 ./bridgectl.sh mode command
+feishu-bridgectl status
 ```
 
 `bridgectl.sh` defaults to the current directory and service name `feishu-bridge`. Override with:
@@ -164,9 +190,14 @@ FEISHU_BRIDGE_SERVICE=feishu-bridge
 - Commit source files, `.env.example`, service templates, and documentation.
 - Do not commit `.env`, `.env.*`, real app secrets, tenant tokens, or chat transcripts.
 - Keep deployment-specific service names, chat IDs, paths, and credentials in private configuration.
+- Run `npm pack --dry-run` before publishing to confirm the package contents.
+- Read `SECURITY.md` before sharing logs or opening public issues.
 
 ## Development
 
 ```sh
 npm run check
+npm test
+npm audit --omit=dev
+npm pack --dry-run
 ```

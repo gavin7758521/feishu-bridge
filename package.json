@@ -1,17 +1,66 @@
 {
-  "name": "feishu-bridge",
+  "name": "@gavin7758521/feishu-bridge",
   "version": "0.1.0",
   "description": "Local Feishu long-connection bridge with pluggable reply backends and CLI helpers.",
   "type": "commonjs",
+  "license": "MIT",
+  "author": "gavin7758521",
+  "homepage": "https://github.com/gavin7758521/feishu-bridge#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gavin7758521/feishu-bridge.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gavin7758521/feishu-bridge/issues"
+  },
+  "keywords": [
+    "feishu",
+    "lark",
+    "bot",
+    "bridge",
+    "long-connection",
+    "codex",
+    "cli"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "bin": {
+    "feishu-bridge": "./bridge.js",
+    "feishu-bridge-read": "./scripts/read.js",
+    "feishu-bridge-send": "./scripts/send.js",
+    "feishu-bridgectl": "./bridgectl.sh"
+  },
+  "files": [
+    "bridge.js",
+    "lib/",
+    "scripts/",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md",
+    "SECURITY.md",
+    "CONTRIBUTING.md",
+    ".env.example",
+    "feishu-bridge.service",
+    "bridgectl.sh"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "start": "node bridge.js",
-    "check": "node --check bridge.js && node --check lib/feishu.js && node --check scripts/read.js && node --check scripts/send.js",
+    "check": "node --check bridge.js && node --check lib/feishu.js && node --check scripts/read.js && node --check scripts/send.js && npm test",
+    "test": "node --test",
+    "prepack": "npm run check",
     "read": "node scripts/read.js",
     "send": "node scripts/send.js",
     "status": "./bridgectl.sh status"
   },
   "dependencies": {
-    "@larksuiteoapi/node-sdk": "^1.24.0",
-    "axios": "^1.7.9"
+    "@larksuiteoapi/node-sdk": "^1.70.0",
+    "axios": "^1.18.1"
+  },
+  "overrides": {
+    "axios": "^1.18.1"
   }
 }

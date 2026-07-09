@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const lark = require("@larksuiteoapi/node-sdk");
 const axios = require("axios");
 const fs = require("fs/promises");
@@ -5,6 +6,17 @@ const fsSync = require("fs");
 const os = require("os");
 const path = require("path");
 const { execFile, spawn } = require("child_process");
+const { applyEnvFile } = require("./lib/feishu");
+
+try {
+    const envResult = applyEnvFile();
+    if (envResult.loaded) {
+        console.log(`Loaded environment from ${envResult.envFile}`);
+    }
+} catch (error) {
+    console.error(`Failed to load environment file: ${error.message}`);
+    process.exit(1);
+}
 
 const REQUIRED_ENV = ["FEISHU_APP_ID", "FEISHU_APP_SECRET"];
 for (const name of REQUIRED_ENV) {
