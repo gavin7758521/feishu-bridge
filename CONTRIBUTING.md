@@ -27,7 +27,7 @@ npm test
 Copy the example environment file and fill in private values:
 
 ```sh
-cp .env.example .env
+cp env.example .env
 ```
 
 Never commit `.env`, `.env.*`, chat transcripts, tokens, or deployment handoff files.

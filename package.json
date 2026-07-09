@@ -1,7 +1,7 @@
 {
   "name": "@gavin7758521/feishu-bridge",
   "version": "0.1.0",
-  "description": "Local Feishu long-connection bridge with pluggable reply backends and CLI helpers.",
+  "description": "Feishu MCP server and CLI helpers for Codex, Claude, and other agent clients.",
   "type": "commonjs",
   "license": "MIT",
   "author": "gavin7758521",
@@ -18,49 +18,45 @@
     "lark",
     "bot",
     "bridge",
-    "long-connection",
+    "mcp",
     "codex",
+    "claude",
     "cli"
   ],
   "engines": {
     "node": ">=18"
   },
   "bin": {
-    "feishu-bridge": "./bridge.js",
+    "feishu-bridge": "./scripts/mcp.js",
+    "feishu-bridge-mcp": "./scripts/mcp.js",
     "feishu-bridge-read": "./scripts/read.js",
-    "feishu-bridge-send": "./scripts/send.js",
-    "feishu-bridgectl": "./bridgectl.sh"
+    "feishu-bridge-send": "./scripts/send.js"
   },
   "files": [
-    "bridge.js",
     "lib/",
     "scripts/",
+    "docs/",
     "README.md",
     "LICENSE",
     "CHANGELOG.md",
     "SECURITY.md",
     "CONTRIBUTING.md",
-    ".env.example",
-    "feishu-bridge.service",
-    "bridgectl.sh"
+    "env.example"
   ],
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
-    "start": "node bridge.js",
-    "check": "node --check bridge.js && node --check lib/feishu.js && node --check scripts/read.js && node --check scripts/send.js && npm test",
+    "start": "node scripts/mcp.js",
+    "check": "node --check lib/feishu.js && node --check scripts/read.js && node --check scripts/send.js && node --check scripts/mcp.js && npm test",
+    "mcp": "node scripts/mcp.js",
     "test": "node --test",
     "prepack": "npm run check",
     "read": "node scripts/read.js",
-    "send": "node scripts/send.js",
-    "status": "./bridgectl.sh status"
+    "send": "node scripts/send.js"
   },
   "dependencies": {
-    "@larksuiteoapi/node-sdk": "^1.70.0",
-    "axios": "^1.18.1"
-  },
-  "overrides": {
-    "axios": "^1.18.1"
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "zod": "^4.4.3"
   }
 }

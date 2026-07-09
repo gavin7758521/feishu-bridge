@@ -68,7 +68,6 @@ web_modules/
 # dotenv environment variable files
 .env
 .env.*
-!.env.example
 HERMES_HANDOFF.md
 
 # parcel-bundler cache (https://parceljs.org/)

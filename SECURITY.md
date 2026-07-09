@@ -22,10 +22,10 @@ Keep these values outside version control:
 - local `.env` files
 - deployment-specific handoff notes
 
-This package intentionally ships `.env.example`, not `.env`.
+This package intentionally ships `env.example`, not `.env`.
 
 ## Runtime Notes
 
-`command` mode runs the configured `FEISHU_BRIDGE_REPLY_COMMAND` through a shell. Only use commands and working directories controlled by a trusted operator.
+The MCP server may read private chat content from Feishu when a client invokes read tools. Review client logs and transcript retention before using it with sensitive groups.
 
-The bridge may receive private chat content from Feishu. Review your logging, systemd journal retention, and reply backend behavior before using it in sensitive groups.
+When using the MCP server, keep message-sending tools behind client approval. For Codex, prefer `default_tools_approval_mode = "prompt"` so sending to Feishu requires explicit confirmation.
