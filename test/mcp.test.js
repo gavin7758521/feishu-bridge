@@ -17,6 +17,14 @@ test("mcp server starts and lists Feishu tools", async () => {
     try {
         const tools = await client.listTools();
         assert.deepEqual(tools.tools.map((tool) => tool.name).sort(), [
+            "feishu_bitable_create_record",
+            "feishu_bitable_list_fields",
+            "feishu_bitable_list_tables",
+            "feishu_bitable_parse_url",
+            "feishu_bitable_search_records",
+            "feishu_bitable_update_record",
+            "feishu_download_drive_media",
+            "feishu_download_message_resource",
             "feishu_find_member",
             "feishu_read_messages",
             "feishu_send_text",
